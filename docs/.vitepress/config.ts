@@ -3,7 +3,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "柴帽双全的博客", //站点标题
   description: "柴帽双全的博客", //mate标签description，多用于搜索引擎抓取摘要
-  base: "./Aristotle/",
+  base: "/Aristotle/",
   head: [["link", { rel: "icon", href: "/logo.png" }]],
   themeConfig: {
     logo: "/logo.png",
