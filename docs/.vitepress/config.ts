@@ -29,14 +29,6 @@ export default defineConfig({
     },
 
     sidebar: {
-      // "/JavaScript/": [
-      //   {
-      //     text: "JavaScript积累",
-      //     items: [
-      //       { text: "社会", link: "/javascript/" },
-      //     ],
-      //   },
-      // ],
       "/Debug/": [
         {
           text: "前端调试",
