@@ -35,7 +35,7 @@ export default defineConfig({
           items: [
             {
               text: "VSCode调试Vue2项目配置教程",
-              link: "/Debug/VSCode调试Vue2项目配置教程.md",
+              link: "/Debug/VSCode调试Vue2项目配置教程",
             },
           ],
         },
