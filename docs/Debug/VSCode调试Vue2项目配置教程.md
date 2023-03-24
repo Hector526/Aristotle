@@ -28,7 +28,7 @@ VS Code在项目目录->.vscode文件夹中创建launch.json。内容如下。
 
 ![launch.json](./img/VSCode调试Vue2项目配置教程4.png)
 
-将configurations中的url替换成第一步记录的url：http://localhost:8001。
+将configurations中的url替换成第一步记录的url：<http://localhost:8001。>
 
 ## 配置vue.config.js文件
 
