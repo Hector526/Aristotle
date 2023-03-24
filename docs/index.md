@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 进入博客
-      link: /guide/what-is-vitepress
+      link: /Debug/VSCode调试Vue2项目配置教程.md
 
 features:
   - icon: 😄

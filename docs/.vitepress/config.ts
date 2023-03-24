@@ -27,5 +27,27 @@ export default defineConfig({
       message: "Released under the MIT License.",
       copyright: "Copyright © 2023 Hector",
     },
+
+    sidebar: {
+      // "/JavaScript/": [
+      //   {
+      //     text: "JavaScript积累",
+      //     items: [
+      //       { text: "社会", link: "/javascript/" },
+      //     ],
+      //   },
+      // ],
+      "/Debug/": [
+        {
+          text: "前端调试",
+          items: [
+            {
+              text: "VSCode调试Vue2项目配置教程",
+              link: "/Debug/VSCode调试Vue2项目配置教程.md",
+            },
+          ],
+        },
+      ],
+    },
   },
 });
