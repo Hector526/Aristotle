@@ -10,7 +10,7 @@ export default defineConfig({
     siteTitle: "柴帽双全",
     nav: [
       { text: "浏览器原理", link: "/browser/" },
-      { text: "前端调试", link: "/debug/VSCode调试Vue2项目配置教程" },
+      { text: "前端调试", link: "/debug/" },
     ],
 
     socialLinks: [
@@ -45,6 +45,7 @@ export default defineConfig({
         {
           text: "前端调试",
           items: [
+            { text: "简介", link: "/debug/" },
             {
               text: "VSCode调试Vue2项目配置教程",
               link: "/debug/VSCode调试Vue2项目配置教程",
