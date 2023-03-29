@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 进入博客
-      link: /Debug/VSCode调试Vue2项目配置教程.md
+      link: /browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程.md
 
 features:
   - icon: 😄

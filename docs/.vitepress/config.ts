@@ -8,10 +8,10 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.png",
     siteTitle: "柴帽双全",
-    // nav: [
-    //   { text: "Github", link: "https://hector526.github.io/Aristotle/" },
-    //   { text: "掘金", link: "https://juejin.cn/user/2559318799429822" },
-    // ],
+    nav: [
+      { text: "浏览器原理", link: "/browser/" },
+      { text: "前端调试", link: "/debug/VSCode调试Vue2项目配置教程" },
+    ],
 
     socialLinks: [
       { icon: "github", link: "https://github.com/Hector526" },
@@ -29,13 +29,25 @@ export default defineConfig({
     },
 
     sidebar: {
-      "/Debug/": [
+      "/browser/": [
+        {
+          text: "浏览器原理",
+          items: [
+            { text: "简介", link: "/browser/" },
+            {
+              text: "01-Chrome架构：仅仅打开了1个页面为什么有4个进程",
+              link: "/browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程",
+            },
+          ],
+        },
+      ],
+      "/debug/": [
         {
           text: "前端调试",
           items: [
             {
               text: "VSCode调试Vue2项目配置教程",
-              link: "/Debug/VSCode调试Vue2项目配置教程",
+              link: "/debug/VSCode调试Vue2项目配置教程",
             },
           ],
         },
