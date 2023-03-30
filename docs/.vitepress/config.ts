@@ -9,8 +9,8 @@ export default defineConfig({
     logo: "/logo.png",
     siteTitle: "柴帽双全",
     nav: [
-      { text: "浏览器原理", link: "/browser/" },
-      { text: "前端调试", link: "/debug/" },
+      { text: "课程笔记", link: "/course/" },
+      { text: "前端知识", link: "/knowledge/" },
     ],
 
     socialLinks: [
@@ -29,6 +29,18 @@ export default defineConfig({
     },
 
     sidebar: {
+      "/course/": [
+        {
+          text: "课程笔记",
+          items: [
+            { text: "目录", link: "/course/" },
+            {
+              text: "浏览器原理",
+              link: "/browser/",
+            },
+          ],
+        },
+      ],
       "/browser/": [
         {
           text: "浏览器原理",
@@ -37,6 +49,18 @@ export default defineConfig({
             {
               text: "01-Chrome架构：仅仅打开了1个页面为什么有4个进程",
               link: "/browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程",
+            },
+          ],
+        },
+      ],
+      "/knowledge/": [
+        {
+          text: "前端知识",
+          items: [
+            { text: "目录", link: "/knowledge/" },
+            {
+              text: "前端调试",
+              link: "/debug/",
             },
           ],
         },

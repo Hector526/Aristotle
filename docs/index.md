@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 进入博客
-      link: /browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程.md
+      link: /course/
 
 features:
   - icon: 😄
