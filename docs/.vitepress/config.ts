@@ -74,6 +74,10 @@ export default defineConfig({
               text: "03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
               link: "/browser/03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
             },
+            {
+              text: "04-导航流程：从输入URL到页面展示，这中间发生了什么",
+              link: "/browser/04-导航流程：从输入URL到页面展示，这中间发生了什么",
+            },
           ],
         },
       ],
