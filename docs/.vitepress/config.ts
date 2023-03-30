@@ -1,10 +1,26 @@
 import { defineConfig } from "vitepress";
+import mdItCustomAttrs from "markdown-it-custom-attrs";
 
 export default defineConfig({
   title: "柴帽双全的博客", //站点标题
   description: "柴帽双全的博客", //mate标签description，多用于搜索引擎抓取摘要
   base: "/Aristotle/",
-  head: [["link", { rel: "icon", href: "/logo.png" }]],
+  head: [
+    ["link", { rel: "icon", href: "/logo.png" }],
+    [
+      "link",
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css",
+      },
+    ],
+    [
+      "script",
+      {
+        src: "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js",
+      },
+    ],
+  ],
   themeConfig: {
     logo: "/logo.png",
     siteTitle: "柴帽双全",
@@ -50,6 +66,14 @@ export default defineConfig({
               text: "01-Chrome架构：仅仅打开了1个页面为什么有4个进程",
               link: "/browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程",
             },
+            {
+              text: "02-TCP协议：如何保证页面文件能被完整送达浏览器",
+              link: "/browser/02-TCP协议：如何保证页面文件能被完整送达浏览器",
+            },
+            {
+              text: "03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
+              link: "/browser/03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
+            },
           ],
         },
       ],
@@ -77,6 +101,18 @@ export default defineConfig({
           ],
         },
       ],
+    },
+  },
+  markdown: {
+    theme: {
+      light: "github-light",
+      dark: "github-dark",
+    },
+    config: (md) => {
+      // use more markdown-it plugins!
+      md.use(mdItCustomAttrs, "image", {
+        "data-fancybox": "gallery",
+      });
     },
   },
 });
