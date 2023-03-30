@@ -60,19 +60,19 @@ export default defineConfig({
             { text: "目录", link: "/knowledge/" },
             {
               text: "前端调试",
-              link: "/debug/",
+              link: "/devDebugger/",
             },
           ],
         },
       ],
-      "/debug/": [
+      "/devDebugger/": [
         {
           text: "前端调试",
           items: [
-            { text: "简介", link: "/debug/" },
+            { text: "简介", link: "/devDebugger/" },
             {
               text: "VSCode调试Vue2项目配置教程",
-              link: "/debug/VSCode调试Vue2项目配置教程",
+              link: "/devDebugger/VSCode调试Vue2项目配置教程",
             },
           ],
         },
