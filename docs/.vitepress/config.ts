@@ -86,6 +86,14 @@ export default defineConfig({
               text: "06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
               link: "/browser/06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
             },
+            {
+              text: "07-变量提升：JavaScript代码是按顺序执行的吗",
+              link: "/browser/07-变量提升：JavaScript代码是按顺序执行的吗",
+            },
+            {
+              text: "08-调用栈：为什么JavaScript代码会出现栈溢出",
+              link: "/browser/08-调用栈：为什么JavaScript代码会出现栈溢出",
+            },
           ],
         },
       ],
