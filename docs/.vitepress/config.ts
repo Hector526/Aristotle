@@ -78,6 +78,14 @@ export default defineConfig({
               text: "04-导航流程：从输入URL到页面展示，这中间发生了什么",
               link: "/browser/04-导航流程：从输入URL到页面展示，这中间发生了什么",
             },
+            {
+              text: "05-渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的",
+              link: "/browser/05-渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的",
+            },
+            {
+              text: "06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
+              link: "/browser/06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
+            },
           ],
         },
       ],
