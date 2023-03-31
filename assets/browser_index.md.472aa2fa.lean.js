@@ -1,0 +1,1 @@
+import{_ as e,c as a,o,N as t}from"./chunks/framework.13ec461e.js";const _=JSON.parse('{"title":"参透了浏览器的工作原理，你就能解决80%的前端难题","description":"","frontmatter":{},"headers":[],"relativePath":"browser/index.md"}'),r={name:"browser/index.md"},p=t("",37),s=[p];function i(n,l,b,h,d,c){return o(),a("div",null,s)}const m=e(r,[["render",i]]);export{_ as __pageData,m as default};
