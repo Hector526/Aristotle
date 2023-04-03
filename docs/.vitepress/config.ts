@@ -94,6 +94,38 @@ export default defineConfig({
               text: "08-调用栈：为什么JavaScript代码会出现栈溢出",
               link: "/browser/08-调用栈：为什么JavaScript代码会出现栈溢出",
             },
+            {
+              text: "09-块级作用域：var缺陷以及为什么要引入let和const",
+              link: "/browser/09-块级作用域：var缺陷以及为什么要引入let和const",
+            },
+            {
+              text: "10-作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的",
+              link: "/browser/10-作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的",
+            },
+            {
+              text: "11-this：从JavaScript执行上下文的视角讲清楚this",
+              link: "/browser/11-this：从JavaScript执行上下文的视角讲清楚this",
+            },
+            {
+              text: "12-栈空间和堆空间：数据是如何存储的",
+              link: "/browser/12-栈空间和堆空间：数据是如何存储的",
+            },
+            {
+              text: "13-垃圾回收：垃圾数据是如何自动回收的",
+              link: "/browser/13-垃圾回收：垃圾数据是如何自动回收的",
+            },
+            {
+              text: "14-编译器和解释器：V8是如何执行一段JavaScript代码的",
+              link: "/browser/14-编译器和解释器：V8是如何执行一段JavaScript代码的",
+            },
+            {
+              text: "15-消息队列和事件循环：页面是怎么“活”起来的",
+              link: "/browser/15-消息队列和事件循环：页面是怎么“活”起来的",
+            },
+            {
+              text: "16-WebAPI：setTimeout是如何实现的",
+              link: "/browser/16-WebAPI：setTimeout是如何实现的",
+            },
           ],
         },
       ],
