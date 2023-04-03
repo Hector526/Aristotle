@@ -1,4 +1,4 @@
-# 16 | WebAPI：setTimeout是如何实现的？
+# 16 | WebAPI：setTimeout 是如何实现的？
 
 在上一篇文章中我们介绍了页面中的事件和消息队列，知道了浏览器页面是由消息队列和事件循环系统来驱动的。
 
@@ -6,13 +6,12 @@
 
 本篇文章主要介绍的是 setTimeout。其实说起 setTimeout 方法，从事开发的同学想必都不会陌生，它就是一个定时器，用来指定某个函数在多少毫秒之后执行。它会返回一个整数，表示定时器的编号，同时你还可以通过该编号来取消这个定时器。下面的示例代码就演示了定时器最基础的使用方式：
 
-~~~ js
-
-function showName(){
-  console.log("极客时间")
+```js
+function showName() {
+  console.log("极客时间");
 }
-var timerID = setTimeout(showName,200);
-~~~
+var timerID = setTimeout(showName, 200);
+```
 
 执行上述代码，输出的结果也很明显，通过 setTimeout 指定在 200 毫秒之后调用 showName 函数，并输出“极客时间”四个字。
 
@@ -22,10 +21,10 @@ var timerID = setTimeout(showName,200);
 
 要了解定时器的工作原理，就得先来回顾下之前讲的事件循环系统，我们知道渲染进程中所有运行在主线程上的任务都需要先添加到消息队列，然后事件循环系统再按照顺序执行消息队列中的任务。下面我们来看看那些典型的事件：
 
-* 当接收到 HTML 文档数据，渲染引擎就会将“解析 DOM”事件添加到消息队列中，
-* 当用户改变了 Web 页面的窗口大小，渲染引擎就会将“重新布局”的事件添加到消息队列中。
-* 当触发了 JavaScript 引擎垃圾回收机制，渲染引擎会将“垃圾回收”任务添加到消息队列中。
-* 同样，如果要执行一段异步 JavaScript 代码，也是需要将执行任务添加到消息队列中。
+- 当接收到 HTML 文档数据，渲染引擎就会将“解析 DOM”事件添加到消息队列中，
+- 当用户改变了 Web 页面的窗口大小，渲染引擎就会将“重新布局”的事件添加到消息队列中。
+- 当触发了 JavaScript 引擎垃圾回收机制，渲染引擎会将“垃圾回收”任务添加到消息队列中。
+- 同样，如果要执行一段异步 JavaScript 代码，也是需要将执行任务添加到消息队列中。
 
 以上列举的只是一小部分事件，这些事件被添加到消息队列之后，事件循环系统就会按照消息队列中的顺序来执行事件。
 
@@ -35,18 +34,18 @@ var timerID = setTimeout(showName,200);
 
 在 Chrome 中除了正常使用的消息队列之外，还有另外一个消息队列，这个队列中维护了需要延迟执行的任务列表，包括了定时器和 Chromium 内部一些需要延迟执行的任务。所以当通过 JavaScript 创建一个定时器时，渲染进程会将该定时器的回调任务添加到延迟队列中。
 
-如果感兴趣，你可以参考Chromium 中关于队列部分的源码。
+如果感兴趣，你可以参考 Chromium 中关于队列部分的源码。
 
 源码中延迟执行队列的定义如下所示：
 
-~~~ js
+```js
 
  DelayedIncomingQueue delayed_incoming_queue;
-~~~
+```
 
 当通过 JavaScript 调用 setTimeout 设置回调函数的时候，渲染进程将会创建一个回调任务，包含了回调函数 showName、当前发起时间、延迟执行时间，其模拟代码如下所示：
 
-~~~ js
+```js
 
 struct DelayTask{
   int64 id；
@@ -58,20 +57,20 @@ DelayTask timerTask;
 timerTask.cbf = showName;
 timerTask.start_time = getCurrentTime(); //获取当前时间
 timerTask.delay_time = 200;//设置延迟执行时间
-~~~
+```
 
 创建好回调任务之后，再将该任务添加到延迟执行队列中，代码如下所示：
 
-~~~ js
+```js
 
 delayed_incoming_queue.push(timerTask)；
-~~~
+```
 
 现在通过定时器发起的任务就被保存到延迟队列中了，那接下来我们再来看看消息循环系统是怎么触发延迟队列的。
 
 我们可以来完善上一篇文章中消息循环的代码，在其中加入执行延迟队列的代码，如下所示：
 
-~~~ js
+```js
 
 void ProcessTimerTask(){
   //从delayed_incoming_queue中取出已经到期的定时器任务
@@ -86,24 +85,23 @@ void MainTherad(){
     //执行消息队列中的任务
     Task task = task_queue.takeTask();
     ProcessTask(task);
-    
+
     //执行延迟队列中的任务
     ProcessDelayTask()
 
     if(!keep_running) //如果设置了退出标志，那么直接退出线程循环
-        break; 
+        break;
   }
 }
-~~~
+```
 
 从上面代码可以看出来，我们添加了一个 **ProcessDelayTask 函数**，该函数是专门用来处理延迟执行任务的。这里我们要重点关注它的执行时机，在上段代码中，处理完消息队列中的一个任务之后，就开始执行 ProcessDelayTask 函数。ProcessDelayTask 函数会根据发起时间和延迟时间计算出到期的任务，然后依次执行这些到期的任务。等到期的任务执行完成之后，再继续下一个循环过程。通过这样的方式，一个完整的定时器就实现了。
 
 设置一个定时器，JavaScript 引擎会返回一个定时器的 ID。那通常情况下，当一个定时器的任务还没有被执行的时候，也是可以取消的，具体方法是调用 clearTimeout 函数，并传入需要取消的定时器的 ID。如下面代码所示：
 
-~~~ js
-
-clearTimeout(timer_id)
-~~~
+```js
+clearTimeout(timer_id);
+```
 
 其实浏览器内部实现取消定时器的操作也是非常简单的，就是直接从 delayed_incoming_queue 延迟队列中，通过 ID 查找到对应的任务，然后再将其从队列中删除掉就可以了。
 
@@ -115,20 +113,19 @@ clearTimeout(timer_id)
 
 在使用 setTimeout 的时候，有很多因素会导致回调函数执行比设定的预期值要久，其中一个就是当前任务执行时间过久从而导致定时器设置的任务被延后执行。我们先看下面这段代码：
 
-~~~ js
-
+```js
 function bar() {
-    console.log('bar')
+  console.log("bar");
 }
 function foo() {
-    setTimeout(bar, 0);
-    for (let i = 0; i < 5000; i++) {
-        let i = 5+8+8+8
-        console.log(i)
-    }
+  setTimeout(bar, 0);
+  for (let i = 0; i < 5000; i++) {
+    let i = 5 + 8 + 8 + 8;
+    console.log(i);
+  }
 }
-foo()
-~~~
+foo();
+```
 
 这段代码中，在执行 foo 函数的时候使用 setTimeout 设置了一个 0 延时的回调任务，设置好回调任务后，foo 函数会继续执行 5000 次 for 循环。
 
@@ -144,11 +141,12 @@ foo()
 
 也就是说在定时器函数里面嵌套调用定时器，也会延长定时器的执行时间，可以先看下面的这段代码：
 
-~~~ js
-
-function cb() { setTimeout(cb, 0); }
+```js
+function cb() {
+  setTimeout(cb, 0);
+}
 setTimeout(cb, 0);
-~~~
+```
 
 上述这段代码你有没有看出存在什么问题？
 
@@ -156,9 +154,9 @@ setTimeout(cb, 0);
 
 ![循环嵌套调用 setTimeout](./img/cbb3b2b1ac8eb4752a585df5445412cd.webp)
 
-上图中的竖线就是定时器的函数回调过程，从图中可以看出，前面五次调用的时间间隔比较小，嵌套调用超过五次以上，后面每次的调用最小时间间隔是 4 毫秒。之所以出现这样的情况，是因为在 Chrome 中，定时器被嵌套调用 5 次以上，系统会判断该函数方法被阻塞了，如果定时器的调用时间间隔小于 4 毫秒，那么浏览器会将每次调用的时间间隔设置为 4 毫秒。下面是Chromium 实现 4 毫秒延迟的代码，你可以看下：
+上图中的竖线就是定时器的函数回调过程，从图中可以看出，前面五次调用的时间间隔比较小，嵌套调用超过五次以上，后面每次的调用最小时间间隔是 4 毫秒。之所以出现这样的情况，是因为在 Chrome 中，定时器被嵌套调用 5 次以上，系统会判断该函数方法被阻塞了，如果定时器的调用时间间隔小于 4 毫秒，那么浏览器会将每次调用的时间间隔设置为 4 毫秒。下面是 Chromium 实现 4 毫秒延迟的代码，你可以看下：
 
-~~~ c++
+```c
 
 static const int kMaxTimerNestingLevel = 5;
 
@@ -168,9 +166,9 @@ static const int kMaxTimerNestingLevel = 5;
 // spinning too busily and provides a balance between CPU spinning and
 // the smallest possible interval timer.
 static constexpr base::TimeDelta kMinimumInterval = base::TimeDelta::FromMilliseconds(4);
-~~~
+```
 
-~~~ c++
+```c
 
 base::TimeDelta interval_milliseconds =
       std::max(base::TimeDelta::FromMilliseconds(1), interval);
@@ -183,7 +181,7 @@ base::TimeDelta interval_milliseconds =
     StartOneShot(interval_milliseconds, FROM_HERE);
   else
     StartRepeating(interval_milliseconds, FROM_HERE);
-~~~
+```
 
 所以，一些实时性较高的需求就不太适合使用 setTimeout 了，比如你用 setTimeout 来实现 JavaScript 动画就不是一个很好的主意。
 
@@ -195,59 +193,55 @@ base::TimeDelta interval_milliseconds =
 
 除了要了解定时器的回调函数时间比实际设定值要延后之外，还有一点需要注意下，那就是 Chrome、Safari、Firefox 都是以 32 个 bit 来存储延时值的，32bit 最大只能存放的数字是 2147483647 毫秒，这就意味着，如果 setTimeout 设置的延迟值大于 2147483647 毫秒（大约 24.8 天）时就会溢出，那么相当于延时值被设置为 0 了，这导致定时器会被立即执行。你可以运行下面这段代码：
 
-~~~ js
-
-function showName(){
-  console.log("极客时间")
+```js
+function showName() {
+  console.log("极客时间");
 }
-var timerID = setTimeout(showName,2147483648);//会被理解调用执行
-~~~
+var timerID = setTimeout(showName, 2147483648); //会被理解调用执行
+```
 
 ### 5. 使用 setTimeout 设置的回调函数中的 this 不符合直觉
 
 如果被 setTimeout 推迟执行的回调函数是某个对象的方法，那么该方法中的 this 关键字将指向全局环境，而不是定义时所在的那个对象。这点在前面介绍 this 的时候也提过，你可以看下面这段代码的执行结果：
 
-~~~ js
-
-var name= 1;
+```js
+var name = 1;
 var MyObj = {
   name: 2,
-  showName: function(){
+  showName: function () {
     console.log(this.name);
-  }
-}
-setTimeout(MyObj.showName,1000)
-~~~
+  },
+};
+setTimeout(MyObj.showName, 1000);
+```
 
 这里输出的是 1，因为这段代码在编译的时候，执行上下文中的 this 会被设置为全局 window，如果是严格模式，会被设置为 undefined。
 
 那么该怎么解决这个问题呢？通常可以使用下面这两种方法。
 
-第一种是将MyObj.showName放在匿名函数中执行，如下所示：
+第一种是将 MyObj.showName 放在匿名函数中执行，如下所示：
 
-~~~ js
-
+```js
 //箭头函数
 setTimeout(() => {
-    MyObj.showName()
+  MyObj.showName();
 }, 1000);
 //或者function函数
-setTimeout(function() {
+setTimeout(function () {
   MyObj.showName();
-}, 1000)
-~~~
+}, 1000);
+```
 
 第二种是使用 bind 方法，将 showName 绑定在 MyObj 上面，代码如下所示：
 
-~~~ js
-
-setTimeout(MyObj.showName.bind(MyObj), 1000)
-~~~
+```js
+setTimeout(MyObj.showName.bind(MyObj), 1000);
+```
 
 ## 总结
 
-* 首先，为了支持定时器的实现，浏览器增加了延时队列。
-* 其次，由于消息队列排队和一些系统级别的限制，通过 setTimeout 设置的回调任务并非总是可以实时地被执行，这样就不能满足一些实时性要求较高的需求了。
-* 最后，在定时器中使用过程中，还存在一些陷阱，需要你多加注意。
+- 首先，为了支持定时器的实现，浏览器增加了延时队列。
+- 其次，由于消息队列排队和一些系统级别的限制，通过 setTimeout 设置的回调任务并非总是可以实时地被执行，这样就不能满足一些实时性要求较高的需求了。
+- 最后，在定时器中使用过程中，还存在一些陷阱，需要你多加注意。
 
 通过分析和讲解，你会发现函数 setTimeout 在时效性上面有很多先天的不足，所以对于一些时间精度要求比较高的需求，应该有针对性地采取一些其他的方案。
