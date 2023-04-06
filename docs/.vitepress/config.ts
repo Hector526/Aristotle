@@ -61,70 +61,124 @@ export default defineConfig({
         {
           text: "浏览器原理",
           items: [
-            { text: "简介", link: "/browser/" },
             {
-              text: "01-Chrome架构：仅仅打开了1个页面为什么有4个进程",
-              link: "/browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程",
+              text: "宏观视角上的浏览器",
+              collapsed: true,
+              items: [
+                { text: "简介", link: "/browser/" },
+                {
+                  text: "01-Chrome架构：仅仅打开了1个页面为什么有4个进程",
+                  link: "/browser/01-Chrome架构：仅仅打开了1个页面，为什么有4个进程",
+                },
+                {
+                  text: "02-TCP协议：如何保证页面文件能被完整送达浏览器",
+                  link: "/browser/02-TCP协议：如何保证页面文件能被完整送达浏览器",
+                },
+                {
+                  text: "03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
+                  link: "/browser/03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
+                },
+                {
+                  text: "04-导航流程：从输入URL到页面展示，这中间发生了什么",
+                  link: "/browser/04-导航流程：从输入URL到页面展示，这中间发生了什么",
+                },
+                {
+                  text: "05-渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的",
+                  link: "/browser/05-渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的",
+                },
+                {
+                  text: "06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
+                  link: "/browser/06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
+                },
+              ],
             },
             {
-              text: "02-TCP协议：如何保证页面文件能被完整送达浏览器",
-              link: "/browser/02-TCP协议：如何保证页面文件能被完整送达浏览器",
+              text: "浏览器中的JavaScript执行机制",
+              collapsed: true,
+              items: [
+                {
+                  text: "07-变量提升：JavaScript代码是按顺序执行的吗",
+                  link: "/browser/07-变量提升：JavaScript代码是按顺序执行的吗",
+                },
+                {
+                  text: "08-调用栈：为什么JavaScript代码会出现栈溢出",
+                  link: "/browser/08-调用栈：为什么JavaScript代码会出现栈溢出",
+                },
+                {
+                  text: "09-块级作用域：var缺陷以及为什么要引入let和const",
+                  link: "/browser/09-块级作用域：var缺陷以及为什么要引入let和const",
+                },
+                {
+                  text: "10-作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的",
+                  link: "/browser/10-作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的",
+                },
+                {
+                  text: "11-this：从JavaScript执行上下文的视角讲清楚this",
+                  link: "/browser/11-this：从JavaScript执行上下文的视角讲清楚this",
+                },
+              ],
             },
             {
-              text: "03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
-              link: "/browser/03-HTTP请求流程：为什么很多站点第二次打开速度会很快",
+              text: "V8工作原理",
+              collapsed: true,
+              items: [
+                {
+                  text: "12-栈空间和堆空间：数据是如何存储的",
+                  link: "/browser/12-栈空间和堆空间：数据是如何存储的",
+                },
+                {
+                  text: "13-垃圾回收：垃圾数据是如何自动回收的",
+                  link: "/browser/13-垃圾回收：垃圾数据是如何自动回收的",
+                },
+                {
+                  text: "14-编译器和解释器：V8是如何执行一段JavaScript代码的",
+                  link: "/browser/14-编译器和解释器：V8是如何执行一段JavaScript代码的",
+                },
+              ],
             },
             {
-              text: "04-导航流程：从输入URL到页面展示，这中间发生了什么",
-              link: "/browser/04-导航流程：从输入URL到页面展示，这中间发生了什么",
+              text: "浏览器中的页面循环系统",
+              collapsed: true,
+              items: [
+                {
+                  text: "15-消息队列和事件循环：页面是怎么“活”起来的",
+                  link: "/browser/15-消息队列和事件循环：页面是怎么“活”起来的",
+                },
+                {
+                  text: "16-WebAPI：setTimeout是如何实现的",
+                  link: "/browser/16-WebAPI：setTimeout是如何实现的",
+                },
+                {
+                  text: "17-WebAPI：XMLHttpRequest是怎么实现的",
+                  link: "/browser/17-WebAPI：XMLHttpRequest是怎么实现的",
+                },
+                {
+                  text: "18-宏任务和微任务：不是所有任务都是一个待遇",
+                  link: "/browser/18-宏任务和微任务：不是所有任务都是一个待遇",
+                },
+                {
+                  text: "19-Promise：使用Promise，告别回调函数",
+                  link: "/browser/19-Promise：使用Promise，告别回调函数",
+                },
+                {
+                  text: "20-asyncawait：使用同步的方式去写异步代码",
+                  link: "/browser/20-asyncawait：使用同步的方式去写异步代码",
+                },
+              ],
             },
             {
-              text: "05-渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的",
-              link: "/browser/05-渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的",
-            },
-            {
-              text: "06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
-              link: "/browser/06-渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的",
-            },
-            {
-              text: "07-变量提升：JavaScript代码是按顺序执行的吗",
-              link: "/browser/07-变量提升：JavaScript代码是按顺序执行的吗",
-            },
-            {
-              text: "08-调用栈：为什么JavaScript代码会出现栈溢出",
-              link: "/browser/08-调用栈：为什么JavaScript代码会出现栈溢出",
-            },
-            {
-              text: "09-块级作用域：var缺陷以及为什么要引入let和const",
-              link: "/browser/09-块级作用域：var缺陷以及为什么要引入let和const",
-            },
-            {
-              text: "10-作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的",
-              link: "/browser/10-作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的",
-            },
-            {
-              text: "11-this：从JavaScript执行上下文的视角讲清楚this",
-              link: "/browser/11-this：从JavaScript执行上下文的视角讲清楚this",
-            },
-            {
-              text: "12-栈空间和堆空间：数据是如何存储的",
-              link: "/browser/12-栈空间和堆空间：数据是如何存储的",
-            },
-            {
-              text: "13-垃圾回收：垃圾数据是如何自动回收的",
-              link: "/browser/13-垃圾回收：垃圾数据是如何自动回收的",
-            },
-            {
-              text: "14-编译器和解释器：V8是如何执行一段JavaScript代码的",
-              link: "/browser/14-编译器和解释器：V8是如何执行一段JavaScript代码的",
-            },
-            {
-              text: "15-消息队列和事件循环：页面是怎么“活”起来的",
-              link: "/browser/15-消息队列和事件循环：页面是怎么“活”起来的",
-            },
-            {
-              text: "16-WebAPI：setTimeout是如何实现的",
-              link: "/browser/16-WebAPI：setTimeout是如何实现的",
+              text: "浏览器中的页面",
+              collapsed: true,
+              items: [
+                {
+                  text: "21-Chrome开发者工具：利用网络面板做性能分析",
+                  link: "/browser/21-Chrome开发者工具：利用网络面板做性能分析",
+                },
+                {
+                  text: "22-DOM树：JavaScript是如何影响DOM树构建的",
+                  link: "/browser/22-DOM树：JavaScript是如何影响DOM树构建的",
+                },
+              ],
             },
           ],
         },
