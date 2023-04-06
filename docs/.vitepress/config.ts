@@ -216,6 +216,60 @@ export default defineConfig({
                   text: "30-HTTP2：如何提升网络速度",
                   link: "/browser/30-HTTP2：如何提升网络速度",
                 },
+                {
+                  text: "31-HTTP3：甩掉TCP、TLS 的包袱，构建高效网络",
+                  link: "/browser/31-HTTP3：甩掉TCP、TLS 的包袱，构建高效网络",
+                },
+                {
+                  text: "32-同源策略：为什么XMLHttpRequest不能跨域请求资源",
+                  link: "/browser/32-同源策略：为什么XMLHttpRequest不能跨域请求资源",
+                },
+                {
+                  text: "33-跨站脚本攻击（XSS）：为什么Cookie中有HttpOnly属性",
+                  link: "/browser/33-跨站脚本攻击（XSS）：为什么Cookie中有HttpOnly属性",
+                },
+                {
+                  text: "34-CSRF攻击：陌生链接不要随便点",
+                  link: "/browser/34-CSRF攻击：陌生链接不要随便点",
+                },
+                {
+                  text: "35-安全沙箱：页面和系统之间的隔离墙",
+                  link: "/browser/35-安全沙箱：页面和系统之间的隔离墙",
+                },
+                {
+                  text: "36-HTTPS：让数据传输更安全",
+                  link: "/browser/36-HTTPS：让数据传输更安全",
+                },
+              ],
+            },
+            {
+              text: "加餐",
+              collapsed: true,
+              items: [
+                {
+                  text: "37 加餐一-浏览上下文组：如何计算Chrome中渲染进程的个数",
+                  link: "/browser/37 加餐一-浏览上下文组：如何计算Chrome中渲染进程的个数",
+                },
+                {
+                  text: "38 加餐二-任务调度：有了setTimeOut，为什么还要使用rAF",
+                  link: "/browser/38 加餐二-任务调度：有了setTimeOut，为什么还要使用rAF",
+                },
+                {
+                  text: "39 加餐三-加载阶段性能：使用Audits来优化Web性能",
+                  link: "/browser/39 加餐三-加载阶段性能：使用Audits来优化Web性能",
+                },
+                {
+                  text: "40 加餐四-页面性能工具：如何使用Performance",
+                  link: "/browser/40 加餐四-页面性能工具：如何使用Performance",
+                },
+                {
+                  text: "41 加餐五-性能分析工具：如何分析Performance中的Main指标",
+                  link: "/browser/41 加餐五-性能分析工具：如何分析Performance中的Main指标",
+                },
+                {
+                  text: "42 加餐六-HTTPS：浏览器如何验证数字证书",
+                  link: "/browser/42 加餐六-HTTPS：浏览器如何验证数字证书",
+                },
               ],
             },
           ],
