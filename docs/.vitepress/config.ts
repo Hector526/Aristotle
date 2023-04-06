@@ -178,6 +178,44 @@ export default defineConfig({
                   text: "22-DOM树：JavaScript是如何影响DOM树构建的",
                   link: "/browser/22-DOM树：JavaScript是如何影响DOM树构建的",
                 },
+                {
+                  text: "23-渲染流水线：CSS如何影响首次加载时的白屏时间",
+                  link: "/browser/23-渲染流水线：CSS如何影响首次加载时的白屏时间",
+                },
+                {
+                  text: "24-分层和合成机制：为什么CSS动画比JavaScript高效",
+                  link: "/browser/24-分层和合成机制：为什么CSS动画比JavaScript高效",
+                },
+                {
+                  text: "25-页面性能：如何系统地优化页面",
+                  link: "/browser/25-页面性能：如何系统地优化页面",
+                },
+                {
+                  text: "26-虚拟DOM：虚拟DOM和实际的DOM有何不同",
+                  link: "/browser/26-虚拟DOM：虚拟DOM和实际的DOM有何不同",
+                },
+                {
+                  text: "27-渐进式网页应用（PWA）：它究竟解决了Web应用的哪些问题",
+                  link: "/browser/27-渐进式网页应用（PWA）：它究竟解决了Web应用的哪些问题",
+                },
+                {
+                  text: "28-WebComponent：像搭积木一样构建Web应用",
+                  link: "/browser/28-WebComponent：像搭积木一样构建Web应用",
+                },
+              ],
+            },
+            {
+              text: "浏览器中的网络",
+              collapsed: true,
+              items: [
+                {
+                  text: "29-HTTP1：HTTP性能优化",
+                  link: "/browser/29-HTTP1：HTTP性能优化",
+                },
+                {
+                  text: "30-HTTP2：如何提升网络速度",
+                  link: "/browser/30-HTTP2：如何提升网络速度",
+                },
               ],
             },
           ],
