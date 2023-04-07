@@ -55,7 +55,7 @@ export default defineConfig({
               link: "/browser/",
             },
             {
-              text: "浏览器原理",
+              text: "说透低代码",
               link: "/lowCode/00-抛开争论，先来看看真正的低代码",
             },
           ],
