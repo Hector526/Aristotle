@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t,N as r}from"./chunks/framework.13ec461e.js";const f=JSON.parse('{"title":"课程笔记目录","description":"","frontmatter":{},"headers":[],"relativePath":"course/index.md"}'),o={name:"course/index.md"},s=r("",5),n=[s];function i(c,_,d,l,h,p){return t(),a("div",null,n)}const m=e(o,[["render",i]]);export{f as __pageData,m as default};
